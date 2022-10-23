@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Feed"
+        android:icon="@drawable/bell"
+        android:id="@+id/feed_menu_item"/>
+    <item android:title="Coleções"
+        android:icon="@drawable/book"
+        android:id="@+id/collections_menu_item"/>
+    <item android:title="Adicionar"
+        android:icon="@drawable/add"
+        android:id="@+id/add_collection_menu_item"/>
+    <item android:title="Pesquisar"
+        android:icon="@drawable/search"
+        android:id="@+id/search_menu_item"/>
+    <item android:title="Perfil"
+        android:icon="@drawable/user"
+        android:id="@+id/profile_menu_item"/>
+</menu>

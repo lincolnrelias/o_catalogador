@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "127698482902",
+    "project_id": "catalogador-d279f",
+    "storage_bucket": "catalogador-d279f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:127698482902:android:ed5c511ae113d58ebabb77",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "127698482902-mlmofkd0uftcqbth17chhrhvf470oidm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmS3xSmC-OPr9-kXN2pwm3ESKcORWittI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "127698482902-mlmofkd0uftcqbth17chhrhvf470oidm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
