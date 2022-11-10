@@ -5,6 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.Timestamp
+import com.google.firebase.firestore.FirebaseFirestore
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -18,15 +25,12 @@ private const val ARG_PARAM2 = "param2"
  */
 class FeedFragment : Fragment() {
     // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var firestore: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        loadFeedItems()
+
     }
 
     override fun onCreateView(
@@ -37,23 +41,36 @@ class FeedFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_feed, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FeedFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FeedFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun loadFeedItems() {
+        firestore = FirebaseFirestore.getInstance();
+        firestore.collection("posts").get()
+            .addOnCompleteListener {
+                run {
+
+                    var posts: HashMap<String, HashMap<String,Any>> = it.result.documents[0].data as HashMap<String, HashMap<String,Any>>
+                    val postList: MutableList<Post> = mutableListOf()
+                    posts+=it.result.documents[1].data as HashMap<String, HashMap<String,Any>>
+                    for (post in posts.values){
+                        post["timeStamp"] = (post["timeStamp"] as Timestamp).toDate()
+                        post["likes"] = (post["likes"] as Long).toInt()
+                        post["comments"] = (post["comments"] as Long).toInt()
+                        postList+=(Post(post))
+                    }
+                    var recyclerView = view?.findViewById<RecyclerView>(R.id.rv_feed)
+                    val adapter = PostAdapter(postList)
+                    recyclerView?.adapter = adapter
                 }
             }
+            .addOnFailureListener { Toast.makeText(context,"Falha", Toast.LENGTH_LONG).show() }
+    }
+
+    private fun initializeDatabase() {
+        firestore = FirebaseFirestore.getInstance();
+        var post: HashMap<String, Post> = HashMap()
+        post["id3"] = Post("testuser2","Carrinhoss 5",null, Calendar.getInstance().time, 12, 2)
+        post["id4"] = Post("testuser1","Carrinhoss 4","Mclaren verde", Calendar.getInstance().time, 35, 2)
+        firestore.collection("posts").add(post)
+            .addOnCompleteListener { Toast.makeText(context,"Show", Toast.LENGTH_LONG).show()}
+            .addOnFailureListener { Toast.makeText(context,"Falha", Toast.LENGTH_LONG).show() }
     }
 }

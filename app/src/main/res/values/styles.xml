@@ -5,4 +5,24 @@
         <item name="android:textColor">@color/orange</item>
         <item name="fontFamily">@font/heebo_extragold</item>
     </style>
+    <style name="postText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="fontFamily">@font/heebo_regular</item>
+    </style>
+    <style name="postSubtext">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#707070</item>
+        <item name="fontFamily">@font/heebo_light</item>
+    </style>
+    <style name="postCardTextMain">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="fontFamily">@font/heebo_bold</item>
+    </style>
+    <style name="postCounters">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="fontFamily">@font/heebo_bold</item>
+    </style>
 </resources>
