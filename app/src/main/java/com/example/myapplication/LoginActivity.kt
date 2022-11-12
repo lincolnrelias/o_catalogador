@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 
 class LoginActivity : AppCompatActivity() {
@@ -26,7 +27,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
         findViewById<AppCompatButton>(R.id.btn_login).setOnClickListener{
             val email = findViewById<EditText>(R.id.et_login_email).text.toString().trim()
             val password = findViewById<EditText>(R.id.et_login_password).text.toString().trim()

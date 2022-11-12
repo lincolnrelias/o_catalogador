@@ -39,7 +39,7 @@ class RegisterActivity : AppCompatActivity() {
                             if (it.isSuccessful){
                                 Toast.makeText(baseContext,"Usuário cadastrado com sucesso!",Toast.LENGTH_SHORT).show()
                             }else{
-                                Toast.makeText(baseContext,"Erro ao cadastrar usuário",Toast.LENGTH_SHORT).show()
+                                Toast.makeText(baseContext,"Erro ao cadastrar usuário!",Toast.LENGTH_SHORT).show()
 
                             }
                         }

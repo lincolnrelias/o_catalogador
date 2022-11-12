@@ -1,5 +1,5 @@
 package com.example.myapplication
 
-class User(name: String, email: String, password: String) {
+class User(val name: String?="",val email: String?="",val password: String?="") {
 
 }
