@@ -1,14 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddCollectionFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="230dp"
+    >
+    <ImageView
+        android:id="@+id/iv_coll_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
+        android:scaleType="fitXY"
+        android:src="@drawable/colecao1"
+        android:tint="#83000000"
+        tools:ignore="UseAppTint"/>
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/add_coll_img"
+        android:layout_gravity="center"
+        app:tint="@color/white" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/heebo_light"
+        android:layout_marginTop="55dp"
+        android:textSize="14sp"
+        android:textColor="#EDEDED"
+        android:text="Adicionar imagem de capa"/>
+</androidx.cardview.widget.CardView>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/et_coll_name"
+        android:layout_width="390dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/heebo_bold"
+        android:hint="Nome da coleção"
+        android:layout_gravity="center"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="390dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:fontFamily="@font/heebo_bold"
+            android:text="Tipo *"
+            android:layout_gravity="center"/>
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_coll_type"
+            android:layout_width="390dp"
+            android:layout_height="40dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/heebo_regular"
+            android:hint="Insira o tipo de coleção"
+            android:layout_gravity="center"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="390dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:fontFamily="@font/heebo_bold"
+            android:text="Data de início *"
+            android:layout_gravity="center"/>
+        <androidx.appcompat.widget.AppCompatEditText
+            android:editable="false"
+            android:id="@+id/tv_date_coll"
+            android:layout_width="390dp"
+            android:headerBackground="@color/orange"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="20/10/2022"
+            android:fontFamily="@font/heebo_regular"
+            android:layout_gravity="center"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="390dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:fontFamily="@font/heebo_bold"
+            android:text="Descrição"
+            android:layout_gravity="center"/>
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_coll_desc"
+            android:layout_width="390dp"
+            android:layout_height="40dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/heebo_regular"
+            android:hint="..."
+            android:layout_gravity="center"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_next_add_coll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/heebo_bold"
+        android:textColor="@color/orange"
+        android:text="Próximo"
+        android:layout_gravity="bottom|end"/>
 </FrameLayout>

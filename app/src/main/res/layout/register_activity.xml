@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="150dp"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_height="150dp"
+        android:layout_marginTop="40dp"
+        android:indeterminate="true"
+        android:visibility="gone"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/orange"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+<androidx.appcompat.widget.LinearLayoutCompat
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -16,6 +35,12 @@
         android:layout_height="wrap_content"
         android:text="@string/main_title"
         style="@style/headerTitle" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/ets_container"
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="300dp"
@@ -84,6 +109,8 @@
             android:layout_height="wrap_content"
             android:text="00000000"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_register"
         android:layout_width="300dp"
@@ -98,3 +125,5 @@
         />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

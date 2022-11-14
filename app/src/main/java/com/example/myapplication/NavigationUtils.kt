@@ -5,6 +5,8 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 
 class NavigationUtils: AppCompatActivity() {
     companion object {
@@ -15,5 +17,13 @@ class NavigationUtils: AppCompatActivity() {
             context.startActivity(intent)
             return true
         }
+        @JvmStatic
+        fun replaceFragment(fragment: Fragment, fragmentManager: FragmentManager): Boolean {
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragment_container,fragment)
+            fragmentTransaction.commit()
+            return true
+        }
     }
+
 }
