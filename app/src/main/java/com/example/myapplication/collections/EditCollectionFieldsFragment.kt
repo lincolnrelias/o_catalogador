@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.collections
 
 import android.net.Uri
 import android.os.Bundle
@@ -11,8 +11,8 @@ import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.AppCompatEditText
-import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.R
 import com.google.firebase.database.FirebaseDatabase
 
 class EditCollectionFieldsFragment : Fragment() {
@@ -50,6 +50,7 @@ class EditCollectionFieldsFragment : Fragment() {
         }
         view?.findViewById<TextView>(R.id.tv_finish_add_coll)?.setOnClickListener{
             addCollectionActivity.addCollectionFields(collFields)
+            addCollectionActivity.submitCollection()
         }
         view?.findViewById<ImageView>(R.id.iv_add_coll_field)?.setOnClickListener{
             collFields.add(CollectionField(view?.findViewById<AppCompatEditText>(R.id.et_add_coll_field)?.text.toString()))

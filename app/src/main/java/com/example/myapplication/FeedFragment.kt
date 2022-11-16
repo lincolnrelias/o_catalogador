@@ -7,10 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.authentication.Post
+import com.example.myapplication.authentication.PostAdapter
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
-import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
 // TODO: Rename parameter arguments, choose names that match

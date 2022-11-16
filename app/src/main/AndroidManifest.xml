@@ -23,14 +23,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".NewCollectionActivity"
+            android:name=".collections.NewCollectionActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".MyCollectionsActivity"
+            android:name=".collections.MyCollectionsActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -51,14 +51,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".RegisterActivity"
+            android:name=".authentication.RegisterActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".authentication.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

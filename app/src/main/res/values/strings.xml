@@ -5,4 +5,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="my_collections">Minhas Coleções</string>
     <string name="new_collection">Nova Coleção</string>
+    <string name="lorem_medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam</string>
+    <string name="coll_name">Nome da coleção</string>
 </resources>

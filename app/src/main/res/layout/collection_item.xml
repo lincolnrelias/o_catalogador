@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/cl_coll_container"
+    android:background="@drawable/coll_field_bg"
+    android:layout_marginTop="10dp"
+    android:layout_marginHorizontal="10dp"
+    android:paddingBottom="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.cardview.widget.CardView
+    android:layout_width="95dp"
+    android:layout_marginTop="7dp"
+    android:layout_marginStart="12dp"
+    android:layout_height="95dp"
+    android:id="@+id/card_image_coll"
+    app:cardCornerRadius="10dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent">
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/iv_coll_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/colecao1"/>
+</androidx.cardview.widget.CardView>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="15dp"
+        app:layout_constraintStart_toEndOf="@id/card_image_coll"
+        app:layout_constraintTop_toTopOf="@id/card_image_coll">
+        <TextView
+            android:id="@+id/tv_coll_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Colecao 1"
+            android:fontFamily="@font/heebo_bold"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_timestamp_coll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/postSubtext"
+            android:textSize="10sp"
+            android:text="15h24 * 31 mai 2022"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_coll_title"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_item_qtd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/postSubtext"
+            android:textSize="10sp"
+            android:text=" * 120 items"
+            app:layout_constraintStart_toEndOf="@id/tv_timestamp_coll"
+            app:layout_constraintTop_toTopOf="@id/tv_timestamp_coll"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_coll_desc"
+            android:layout_marginTop="8dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/heebo_medium"
+            android:lineSpacingMultiplier="0.7"
+            android:textSize="13sp"
+            android:text="@string/lorem_medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_timestamp_coll"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <include layout="@layout/layout_interactables"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/card_image_coll"
+        app:layout_constraintBottom_toBottomOf="@id/card_image_coll"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

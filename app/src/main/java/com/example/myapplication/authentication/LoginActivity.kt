@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.authentication
 
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -9,17 +9,16 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.myapplication.FeedActivity
+import com.example.myapplication.NavigationUtils
+import com.example.myapplication.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
-import java.util.jar.Manifest
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth;

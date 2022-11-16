@@ -1,6 +1,8 @@
 package com.example.myapplication
 
 import android.content.Context
+import com.example.myapplication.collections.MyCollectionsActivity
+import com.example.myapplication.collections.NewCollectionActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class BottomNavigationUtils {
@@ -13,10 +15,10 @@ class BottomNavigationUtils {
                         NavigationUtils.navigateTo(context,FeedActivity())
                     }
                     R.id.collections_menu_item->{
-                        NavigationUtils.navigateTo(context,MyCollectionsActivity())
+                        NavigationUtils.navigateTo(context, MyCollectionsActivity())
                     }
                     R.id.add_collection_menu_item->{
-                        NavigationUtils.navigateTo(context,NewCollectionActivity())
+                        NavigationUtils.navigateTo(context, NewCollectionActivity())
                     }
                     R.id.search_menu_item->{
                         NavigationUtils.navigateTo(context,SearchActivity())

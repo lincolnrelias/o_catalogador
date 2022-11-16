@@ -1,8 +1,5 @@
-package com.example.myapplication
+package com.example.myapplication.collections
 
-import android.app.Activity.RESULT_OK
-import android.content.Intent
-import android.media.Image
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,27 +7,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.AppCompatTextView
-import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.Timestamp
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
+import com.example.myapplication.NavigationUtils
+import com.example.myapplication.R
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
-import java.util.*
-import kotlin.collections.HashMap
+import com.google.firebase.storage.FirebaseStorage
 
 class AddCollectionFragment : Fragment() {
-    private lateinit var firestore: FirebaseDatabase
+    private lateinit var databaseRef: FirebaseDatabase
+    lateinit var storageRef: FirebaseStorage
     lateinit var galleryImage : ActivityResultLauncher<String>
     lateinit var addCollectionActivity: NewCollectionActivity
     lateinit var imageUri : Uri
     override fun onCreate(savedInstanceState: Bundle?) {
+        imageUri = Uri.EMPTY
         galleryImage = registerForActivityResult(
             ActivityResultContracts.GetContent()
         ) {
@@ -63,7 +56,10 @@ class AddCollectionFragment : Fragment() {
                 view?.findViewById<AppCompatEditText>(R.id.tv_date_coll)?.text.toString(),
                 view?.findViewById<AppCompatEditText>(R.id.et_coll_desc)?.text.toString(),
             )
-            NavigationUtils.replaceFragment(EditCollectionFieldsFragment(),this.parentFragmentManager)
+            NavigationUtils.replaceFragment(
+                EditCollectionFieldsFragment(),
+                this.parentFragmentManager
+            )
         }
     }
 }
