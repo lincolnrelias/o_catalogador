@@ -11,7 +11,7 @@ data class Collection(
     var itemCount: Int = 0,
     val description: String = "",
     var campos: List<String>? = null,
-    var items: List<List<Pair<String,String>>>? = null,
+    var items: List<String>? = null,
     var favorites: Int=0,
     var comments: Int=0,
     var likes: Int=0){

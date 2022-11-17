@@ -13,7 +13,14 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+    <include
+        android:visibility="gone"
+        android:id="@+id/ic_header_collection"
+        layout="@layout/header_my_collections"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"

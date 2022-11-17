@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_section"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/header_bg"
         app:layout_constraintTop_toTopOf="parent">
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main_coll_section"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,6 +66,80 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:src="@drawable/cog"
                 app:tint="@color/orange" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/coll_section"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:src="@drawable/arrow"
+                android:layout_marginStart="15dp"
+                android:id="@+id/arr_back"
+                android:tint="@color/orange"
+                android:layout_marginBottom="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/header_title_collection"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/header_title_collection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/headerTitle"
+                android:text="Coleção"
+                app:layout_constraintStart_toEndOf="@id/arr_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="12dp"
+                android:layout_marginBottom="8dp"/>
+            <TextView
+                android:id="@+id/tv_edit_collection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/heebo_bold"
+                android:layout_marginEnd="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/header_title_collection"
+                android:text="Editar Coleção"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/coll_new_item_section"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="30dp"
+                android:layout_height="25dp"
+                android:src="@drawable/arrow"
+                android:layout_marginStart="15dp"
+                android:id="@+id/arr_back_item"
+                android:tint="@color/orange"
+                android:layout_marginBottom="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/header_title_new_item"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/header_title_new_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/headerTitle"
+                android:text="Novo item"
+                app:layout_constraintStart_toEndOf="@id/arr_back_item"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="12dp"
+                android:layout_marginBottom="8dp"/>
+            <TextView
+                android:id="@+id/tv_save_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/heebo_bold"
+                android:layout_marginEnd="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/header_title_new_item"
+                android:text="Salvar"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

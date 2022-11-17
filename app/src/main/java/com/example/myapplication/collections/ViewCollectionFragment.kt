@@ -35,7 +35,9 @@ class ViewCollectionFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        collection = (activity as MyCollectionsActivity).currCollection?.second
+        val activity = (activity as MyCollectionsActivity)
+        collection = activity.currCollection?.second
+        activity.showHeader("Collection")
         Picasso.get().load(collection?.collImageUri).into(view?.findViewById(R.id.iv_coll_img))
         view?.findViewById<TextView>(R.id.title)?.text = collection?.collectionName
         view?.findViewById<TextView>(R.id.tv_timestamp)?.text = " *"+collection?.creationDate
