@@ -36,6 +36,12 @@ data class Collection(
     companion object {
         @JvmStatic
         fun mapToCollection(mapValues: HashMap<String, Any>): Collection {
+            lateinit var result: List<String>
+            if (mapValues.get("items") is String){
+                result = listOf<String>(mapValues.get("items") as String)
+            }else{
+                result = mapValues.get("items") as List<String>
+            }
             return Collection(
 
                 Uri.parse(mapValues.get("imgUri") as String),
@@ -46,7 +52,7 @@ data class Collection(
                 (mapValues.get("itemCount") as Long).toInt(),
                 mapValues.get("description") as String,
                 mapValues.get("campos") as List<String>,
-                null,
+                result,
                 (mapValues.get("favorites") as Long).toInt(),
                 (mapValues.get("comments") as Long).toInt(),
                 (mapValues.get("likes") as Long).toInt(),

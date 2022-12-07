@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -30,6 +31,7 @@ class PostAdapter(private val mList: List<Post>) : RecyclerView.Adapter<PostAdap
         holder.cardWrapper.visibility = if(postViewModel.itemName!=null) View.GONE else View.VISIBLE
         holder.collectionTextView.text = postViewModel.collectionName
         holder.mainTextView.text = text
+        Picasso.get().load(postViewModel.imgUri).into(holder.collImg)
         holder.timestampTextView.text = SimpleDateFormat("hh:mm * dd MMM yyyy",
             Locale("pt","BR")).format(postViewModel.timeStamp)
         holder.likesTextView.text = postViewModel.likes.toString()
@@ -53,6 +55,7 @@ class PostAdapter(private val mList: List<Post>) : RecyclerView.Adapter<PostAdap
         val cardWrapper: CardView = itemView.findViewById(R.id.content_card)
         val collectionTextView: TextView = itemView.findViewById(R.id.collection_title)
         val likesCounter: TextView = itemView.findViewById(R.id.likes_counter)
+        val collImg: ImageView = itemView.findViewById(R.id.card_image)
         val commentsCounter:TextView = itemView.findViewById(R.id.comments_counter)
         val likesBtn: ImageView = itemView.findViewById(R.id.likes_icon)
         val commentsBtn: ImageView = itemView.findViewById(R.id.comments_icon)

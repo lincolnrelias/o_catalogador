@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
@@ -12,14 +13,16 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 
-class CollectionsFragment : Fragment() {
+class CollectionNewItemFragment : Fragment() {
     private lateinit var databaseRef: DatabaseReference
     lateinit var auth: FirebaseAuth
-    lateinit var collections: MutableList<Pair<String?,Collection>>
+    var collection: Pair<String?,Collection>? = null
+    lateinit var activity: MyCollectionsActivity
     override fun onCreate(savedInstanceState: Bundle?) {
-        collections = ArrayList()
         auth = FirebaseAuth.getInstance()
         databaseRef = FirebaseDatabase.getInstance().getReference("Collections")
+        activity = getActivity() as MyCollectionsActivity
+        collection = activity.currCollection
         super.onCreate(savedInstanceState)
     }
     override fun onCreateView(
@@ -27,38 +30,34 @@ class CollectionsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_collections, container, false)
+        return inflater.inflate(R.layout.fragment_collection_item_new, container, false)
     }
 
     override fun onResume() {
+        activity.showHeader("NewItem")
         super.onResume()
-        populateRecyclerView()
-        (activity as MyCollectionsActivity).showHeader("Main")
     }
-    fun populateRecyclerView(){
-        var currentUid = auth.currentUser?.uid
-        if (currentUid!=null){
-            databaseRef
-                .orderByChild("uid")
-                .equalTo(currentUid).addListenerForSingleValueEvent(object : ValueEventListener {
+    override fun onStart() {
+        super.onStart()
+        view?.findViewById<ImageView>(R.id.iv_coll_item_new)?.setOnClickListener{
+            activity.galleryImage.launch("image/*")
+        }
+        if(collection!=null){
+            databaseRef.child(collection!!.first.toString()).child("campos").addListenerForSingleValueEvent(
+                object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
-                        collections.clear()
                         // Get user object and use the values to update the UI
-                        for (collectionData in dataSnapshot.children) {
-                            var mapValues = collectionData.value as HashMap<String, Any>
-                            collections.add(Pair(collectionData.key,Collection.mapToCollection(mapValues)))
-                        }
-                        if (!collections?.isEmpty()!!){
-                            activity?.findViewById<RecyclerView>(R.id.rv_collections)?.adapter = CollectionAdapter(collections,activity as MyCollectionsActivity)
-                        }
-
+                        val list:List<String> = dataSnapshot.getValue() as ArrayList<String>
+                        view?.findViewById<RecyclerView>(R.id.rv_item_fields)?.adapter = CollectionItemFieldAdapter(list)
                     }
 
                     override fun onCancelled(databaseError: DatabaseError) {
                         // Getting Post failed, log a message
                         Log.w("Error", "loadUser:onCancelled", databaseError.toException())
                     }
-                })
+                }
+            )
         }
+
     }
 }

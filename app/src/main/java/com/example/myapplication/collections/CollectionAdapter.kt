@@ -34,7 +34,7 @@ class CollectionAdapter(private val mList: MutableList<Pair<String?,Collection>>
         holder.collComments.text = collection.comments.toString()
         holder.container.setOnClickListener{
             activity.currCollection = collKeyPair
-            NavigationUtils.replaceFragment(ViewCollectionFragment(), activity.supportFragmentManager)
+            NavigationUtils.replaceFragment(ViewCollectionFragment(), activity.supportFragmentManager,false)
         }
     }
 

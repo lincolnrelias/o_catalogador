@@ -69,12 +69,45 @@
             android:textSize="20sp"
             android:fontFamily="@font/heebo_medium"
             android:text="@string/lorem_medium"/>
-        <include
-            layout="@layout/layout_interactables_big"
-            android:layout_height="wrap_content"
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="30dp"/>
+            android:layout_height="wrap_content">
+            <include
+                layout="@layout/layout_interactables_big"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="30dp"/>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/search_bar_collection"
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/login_et_bg">
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="3dp"
+                    android:tint="@color/orange"
+                    android:src="@drawable/search"/>
+                <EditText
+                    android:id="@+id/et_search_collection"
+                    android:maxLines="1"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_width="250dp"
+                    android:fontFamily="@font/heebo_regular"
+                    android:textSize="15sp"
+                    android:background="@android:color/transparent"
+                    android:layout_height="wrap_content"
+                    android:hint="Buscar itens..."
+                    android:textColorHint="#838383"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_coll_itens"
             android:layout_width="match_parent"

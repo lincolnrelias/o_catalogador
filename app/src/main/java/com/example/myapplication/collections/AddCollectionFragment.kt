@@ -58,7 +58,8 @@ class AddCollectionFragment : Fragment() {
             )
             NavigationUtils.replaceFragment(
                 EditCollectionFieldsFragment(),
-                this.parentFragmentManager
+                this.parentFragmentManager,
+                false
             )
         }
     }

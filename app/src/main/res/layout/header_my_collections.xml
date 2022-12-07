@@ -24,7 +24,7 @@
                 android:tint="@color/orange"
                 android:layout_marginBottom="5dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="@id/header_title"/>
+                app:layout_constraintBottom_toBottomOf="@id/header_title_collection"/>
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/header_title_collection"
                 android:layout_width="wrap_content"

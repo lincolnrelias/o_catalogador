@@ -2,11 +2,12 @@ package com.example.myapplication
 
 import android.app.Activity
 import android.content.Context
+import android.content.ContextWrapper
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+
 
 class NavigationUtils: AppCompatActivity() {
     companion object {
@@ -18,10 +19,15 @@ class NavigationUtils: AppCompatActivity() {
             return true
         }
         @JvmStatic
-        fun replaceFragment(fragment: Fragment, fragmentManager: FragmentManager): Boolean {
+        fun replaceFragment(fragment: Fragment, fragmentManager: FragmentManager, addToStack: Boolean): Boolean {
             val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.fragment_container,fragment)
-            fragmentTransaction.commit()
+            if(addToStack){
+                fragmentTransaction.add(R.id.fragment_container,fragment).addToBackStack(null)
+            }else{
+                fragmentTransaction.replace(R.id.fragment_container,fragment)
+            }
+
+                fragmentTransaction.commit()
             return true
         }
     }

@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.myapplication.BottomNavigationUtils
 import com.example.myapplication.NavigationUtils
 import com.example.myapplication.R
@@ -37,9 +39,13 @@ class NewCollectionActivity : AppCompatActivity() {
         navView.menu.getItem(ACTIVITY_NUM).isChecked = true
         findViewById<AppCompatTextView>(R.id.header_title)?.text = baseContext.getString(R.string.new_collection)
         findViewById<AppCompatImageView>(R.id.header_config_btn).visibility = View.GONE
-        NavigationUtils.replaceFragment(AddCollectionFragment(), supportFragmentManager)
+        NavigationUtils.replaceFragment(AddCollectionFragment(), supportFragmentManager,true)
     }
 
+    override fun onStart() {
+        showHeader("EditCollection")
+        super.onStart()
+    }
     fun createCollection(imgUri: Uri,collName: String, type :String, creationDate: String, description:String){
         val currentUser = auth.currentUser
         if(currentUser!=null){
@@ -58,19 +64,33 @@ class NewCollectionActivity : AppCompatActivity() {
         }
         collectionObj.campos = Collections.unmodifiableList(strList)
     }
-
+    fun showHeader(header: String){
+        findViewById<ConstraintLayout>(R.id.coll_section).visibility = if (header == "Collection") View.VISIBLE else View.GONE
+        findViewById<ConstraintLayout>(R.id.main_coll_section).visibility = if (header == "Main") View.VISIBLE else View.GONE
+        findViewById<ConstraintLayout>(R.id.coll_new_item_section).visibility = if (header == "NewItem") View.VISIBLE else View.GONE
+        findViewById<ConstraintLayout>(R.id.coll_edit_section).visibility = if (header == "EditCollection") View.VISIBLE else View.GONE
+        if(header!="Collection" && header!="Main" && header!="NewItem" && header!="EditCollection"){
+            findViewById<ConstraintLayout>(R.id.coll_item_section).visibility = View.VISIBLE
+            findViewById<ConstraintLayout>(R.id.coll_item_section).visibility = View.VISIBLE
+            findViewById<TextView>(R.id.header_title_item_normal).text = header
+        }else{
+            findViewById<ConstraintLayout>(R.id.coll_item_section).visibility = View.GONE
+        }
+    }
     fun submitCollection(){
        if(collectionObj.campos!=null){
-           storageRef.getReference("images")
+           storageRef.getReference("images").child(UUID.randomUUID().toString())
                .putFile(collectionObj.collImageUri)
                .addOnCompleteListener{ task->
                    if(task.isSuccessful){
                        Log.d("", "submitCollection: successfull")
                        task.result.metadata!!.reference!!.downloadUrl.addOnSuccessListener {
-
-                           databaseRef.getReference("Collections").push().setValue(collectionObj.mapToString(it.toString())).addOnCompleteListener {
+                           val key = databaseRef.getReference("Collections").push().key
+                           databaseRef.getReference("Collections").child(key.toString()).setValue(collectionObj.mapToString(it.toString())).addOnCompleteListener {
                                if(it.isSuccessful){
                                    Log.d("", "submitCollection: successfull")
+                                   databaseRef.getReference("Posts").push().setValue(listOf(auth.currentUser?.uid,key))
+                                   onBackPressed()
                                }else{
                                    Log.d("", "submitCollection: failed")
                                }

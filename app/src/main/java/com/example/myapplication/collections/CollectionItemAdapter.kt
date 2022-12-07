@@ -1,19 +1,17 @@
 package com.example.myapplication.collections
-import android.media.Image
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.NavigationUtils
 import com.example.myapplication.R
+import com.example.myapplication.colle.CollectionItemFragment
 import com.squareup.picasso.Picasso
 
-class CollectionItemAdapter(private val mList: MutableList<CollectionItem>,val activity: MyCollectionsActivity) : RecyclerView.Adapter<CollectionItemAdapter.ViewHolder>() {
+class CollectionItemAdapter(private val mList: MutableList<Pair<String?,CollectionItem>>,val activity: MyCollectionsActivity) : RecyclerView.Adapter<CollectionItemAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -27,13 +25,17 @@ class CollectionItemAdapter(private val mList: MutableList<CollectionItem>,val a
         val collectionItem = mList[position]
         if (position == mList.size-1){
             holder.container.setOnClickListener {
-            NavigationUtils.replaceFragment(CollectionItemFragment(),activity.supportFragmentManager)
+            NavigationUtils.replaceFragment(CollectionNewItemFragment(),activity.supportFragmentManager,true)
             }
         }else{
-            Picasso.get().load(collectionItem?.itemImgUri).into(holder.imageView)
+            holder.container.setOnClickListener{
+                NavigationUtils.replaceFragment(CollectionItemFragment(),activity.supportFragmentManager,true)
+                activity.currItemPos = position
+            }
+            Picasso.get().load(collectionItem.second.itemImgUri).into(holder.imageView)
             holder.imageView.visibility = View.VISIBLE
             holder.imageViewAdd.visibility = View.GONE
-            holder.tvName.text = collectionItem.name
+            holder.tvName.text = collectionItem.second.name
         }
 
 
